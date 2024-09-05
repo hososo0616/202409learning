@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="test">テスト</div> -->
+    <div id="test"></div>
+    <!-- <button id="target" onclick="change_color()">押してね</button> -->
+    <button id="target">押してね</button>
+    <script>
+        // const test = document.getElementById('test');
+        // test.classList.add('red');
+        // console.log(test);
+
+        // function change_color() {
+        //     const test = document.getElementById('test');
+        //     test.textContent = 'テスト';
+        //     test.classList.add('red');
+        // }
+
+        const target = document.getElementById('target');
+        target.addEventListener('click', () => {
+            const test = document.getElementById('test');
+            test.textContent = 'テスト';
+            test.classList.add('red');
+        })
+
+    </script>
+</body>
+</html>
