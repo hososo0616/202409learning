@@ -19,14 +19,28 @@
     { name: '居酒屋', emoji: '🏮' },
     { name: 'ファミレス', emoji: '🍽️' }
     ])
+
+    const pickedFoodIndex = ref(0);
+    const newFoodIndex = ref(1);
+    function pickFood(index) {
+      pickedFoodIndex.value = index;
+      newFoodIndex.value++;
+    }
 </script>
 
 <template>
   <main>
-    <h1 class="title">今日何食べる？</h1>
-    <FoodCard :name="foods[0].name" :emoji="foods[0].emoji" onclick="window.alert('hello')"/>
-    <p>VS</p>
-    <FoodCard :name="foods[4].name" :emoji="foods[4].emoji"/>
+    <template v-if="newFoodIndex >= foods.length">
+      <h1 class="title">あなたの今日の夕飯はこれです</h1>  
+    </template>
+    <template v-else>
+      <h1 class="title">今日何食べる？</h1>  
+    </template>
+    <FoodCard :name="foods[pickedFoodIndex].name" :emoji="foods[pickedFoodIndex].emoji" @click="pickFood(pickedFoodIndex)"/>
+    <template v-if="newFoodIndex < foods.length">
+      <p>VS</p>
+      <FoodCard :name="foods[newFoodIndex].name" :emoji="foods[newFoodIndex].emoji" @click="pickFood(newFoodIndex)"/>
+    </template>
   </main>
 </template>
 

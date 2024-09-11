@@ -6,35 +6,34 @@ const isShow = ref(true);
 
 <template>
   <h1>Animation</h1>
-  <button @click="isShow = !isShow">switch</button>
-  <Transition name="v">
-    <div v-if="isShow">Hello</div>
-  </Transition>
+  <div :class="{'opacity-80': isShow, 'opacity-20': !isShow}">Hello</div>
+  <button @click="isShow = !isShow">Show</button>
 </template>
 <style scoped>
-  .v-enter-from {
-    opacity: 0;
-  }
+div {
+  transition: opacity 2s;
+  animation: slide 3s infinite;
+}
 
-  .v-enter-active {
-    transition: opacity 2s;
-  }
+.opacity-80 {
+  opacity: 0.8;
+}
 
-  .v-enter-to {
-    opacity: 1;
-  }
+.opacity-20 {
+  opacity: 0.2;
+}
 
-  .v-leave-from {
-    opacity: 1;
+@keyframes slide {
+  0% {
+    transform: translateX(0);
   }
-
-  .v-leave-active {
-    transition: opacityy 2s;
+  50% {
+    transform: translateX(100px);
   }
-
-  .v-leave-to {
-    opacity: 0;
+  100% {
+    transform: translateX(0);
   }
+}
 </style>
 
 
